@@ -1,4 +1,4 @@
-M7 Step Counter Plugin for PhoneGap
+#M7 Step Counter Plugin for PhoneGap
 =============
 
 
