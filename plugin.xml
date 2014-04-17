@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="org.apache.cordova.M7StepCounter"
+    version="0.2.3">
+
+    <name>M7 StepCounter</name>
+    <description>M7 StepCounter Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>M7, iOS</keywords>
+    <repo>https://github.com/jihyunlee/M7StepCounter.git</repo>
+    <issue>https://github.com/jihyunlee/M7StepCounter/issues</issue>
+
+    <engines>
+        <engine name="cordova" version=">=2.9.0" />
+    </engines>
+
+    <js-module src="www/M7StepCounter.js" name="M7StepCounter">
+        <clobbers target="window.M7StepCounter" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/widget">
+            <feature name="M7StepCounter">
+                <param name="ios-package" value="M7StepCounter" onload="true"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/M7StepCounter.h" target-dir="M7StepCounter" />
+        <source-file src="src/ios/M7StepCounter.m" target-dir="M7StepCounter" />
+
+        <!-- frameworks -->
+        <framework src="CoreBluetooth.framework" />
+    </platform>
+</plugin>
