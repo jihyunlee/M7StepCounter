@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="org.apache.cordova.M7StepCounter"
-    version="0.2.3">
+    id="com.hellojihyun.M7StepCounter"
+    version="1.0.0">
 
-    <name>M7 StepCounter</name>
-    <description>M7 StepCounter Plugin</description>
+    <name>M7 Step Counter Plugin</name>
+    <description>Cordova Plugin for iOS M7 StepCounter</description>
     <license>Apache 2.0</license>
     <keywords>M7, iOS</keywords>
     <repo>https://github.com/jihyunlee/M7StepCounter.git</repo>
@@ -16,18 +16,19 @@
     </engines>
 
     <js-module src="www/M7StepCounter.js" name="M7StepCounter">
-        <clobbers target="window.M7StepCounter" />
+        <clobbers target="M7StepCounter" />
     </js-module>
 
+    <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/widget">
             <feature name="M7StepCounter">
-                <param name="ios-package" value="M7StepCounter" onload="true"/>
+                <param name="ios-package" value="CDVM7StepCounter" onload="true"/>
             </feature>
         </config-file>
 
-        <header-file src="src/ios/M7StepCounter.h" target-dir="M7StepCounter" />
-        <source-file src="src/ios/M7StepCounter.m" target-dir="M7StepCounter" />
+        <header-file src="src/ios/CDVM7StepCounter.h" />
+        <source-file src="src/ios/CDVM7StepCounter.m" />
 
         <!-- frameworks -->
         <framework src="CoreBluetooth.framework" />
