@@ -31,7 +31,9 @@
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command
 {
-
+	CDVPluginResult *pluginResult = nil;
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void) start:(CDVInvokedUrlCommand*)command
