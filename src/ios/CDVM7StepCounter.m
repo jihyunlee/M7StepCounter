@@ -32,17 +32,17 @@
 
 - (void) getForKey:(CDVInvokedUrlCommand*)command
 {
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
 }
 
 - (void) setForKey:(CDVInvokedUrlCommand*)command
 {
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
 }
 
 - (void) removeForKey:(CDVInvokedUrlCommand*)command
 {   
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
 }
 
 
