@@ -24,8 +24,8 @@
 @interface CDVM7StepCounter : CDVPlugin {
 }
 
-- (void) getForKey:(CDVInvokedUrlCommand*)command;
-- (void) setForKey:(CDVInvokedUrlCommand*)command;
-- (void) removeForKey:(CDVInvokedUrlCommand*)command;
+- (void) isAvailable:(CDVInvokedUrlCommand*)command;
+- (void) start:(CDVInvokedUrlCommand*)command;
+- (void) stop:(CDVInvokedUrlCommand*)command;
 
 @end
