@@ -30,5 +30,7 @@
         <header-file src="src/ios/CDVM7StepCounter.h" />
         <source-file src="src/ios/CDVM7StepCounter.m"/>
         
+        <!-- frameworks -->
+        <framework src="CoreMotion.framework" />
     </platform>
 </plugin>
