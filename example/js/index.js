@@ -34,19 +34,31 @@ var app = {
     },
     isAvailable: function() {
         console.log('app.isAvailable');
-        app.sc.isAvailable(app.onAvailable, app.generateFailureFunction("isAvailable Failed"));
+        app.sc.isAvailable(app.onAvailable, app.failure("isAvailable Failed"));
     },
     onAvailable: function(res) {
         console.log('app.onAvailable', res);
     },
     start: function() {
-        
+        app.sc.start(app.onStart, app.failure("start Failed"));
+    },
+    onStart: function() {
+        console.log('app.onStart');
     },
     stop: function() {
-        
+        app.sc.stop(app.onStop, app.failure("start Failed"));
     },
-    generateFailureFunction: function(message) {
-        console.log('app.generateFailure', message);
+    onStop: function() {
+        console.log('app.onStop');
+    },
+    getSteps: function() {
+        app.sc.getSteps(app.gotSteps, app.failure("getSteps Failed"));
+    },
+    gotSteps: function(res) {
+        console.log('app.gotSteps', res);
+    },
+    failure: function(message) {
+        console.log('app.failure', message);
         var func = function(reason) {
             var details = "";
             if (reason) {
