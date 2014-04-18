@@ -20,9 +20,13 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface CDVM7StepCounter : CDVPlugin {
+
 }
+
+@property (strong, nonatomic) CMStepCounter 	*stepCounter;
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command;
 - (void) start:(CDVInvokedUrlCommand*)command;

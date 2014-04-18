@@ -21,12 +21,17 @@
 
 @implementation CDVM7StepCounter
 
+@synthesize stepCounter;
+
+
 - (void)pluginInitialize {
     
     NSLog(@"M7StepCounter Cordova Plugin");
     NSLog(@"(c)2014 Jihyun Lee");
 
     [super pluginInitialize];
+
+    self.stepCounter = [[CMStepCounter alloc] initWithDelegate:self queue:nil];
 }
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command
