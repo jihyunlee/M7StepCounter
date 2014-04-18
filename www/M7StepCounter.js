@@ -40,4 +40,9 @@ M7StepCounter.prototype.stop = function(successCallback, failureCallback)
 	exec(successCallback, failureCallback, this.serviceName, "stop", []);
 }
 
+M7StepCounter.prototype.getSteps = function(successCallback, failureCallback)
+{
+	exec(successCallback, failureCallback, this.serviceName, "getSteps", []);
+}
+
 module.exports = M7StepCounter;

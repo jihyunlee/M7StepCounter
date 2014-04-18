@@ -45,6 +45,8 @@
 
 }
 
+- (void) getSteps:(CDVInvokedUrlCommand*)command
+{   
 
+}
 @end
-
