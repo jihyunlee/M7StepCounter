@@ -29,8 +29,6 @@
     NSLog(@"(c)2014 Jihyun Lee");
     NSLog(@"------------------------------");
     [super pluginInitialize];
-    
-    self.stepCounter = [[CMStepCounter alloc] init];
 }
 
 - (BOOL) isAvailable:(CDVInvokedUrlCommand*)command
@@ -44,15 +42,34 @@
 - (void) start:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"CDVM7StepCounter -- start");
+    self.stepCounter = [[CMStepCounter alloc] init];
+    [self.stepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] 
+                      updateOn:3
+                      withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+                          NSLog(@"%s %ld %@ %@", __PRETTY_FUNCTION__, numberOfSteps, timestamp, error);
+                      }];
 }
 
 - (void) stop:(CDVInvokedUrlCommand*)command
 {   
     NSLog(@"CDVM7StepCounter -- stop");
+    [self.stepCounter stopStepCountingUpdates];
 }
 
 - (void) getSteps:(CDVInvokedUrlCommand*)command
 {   
     NSLog(@"CDVM7StepCounter -- getSteps");
+    NSDate *now = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:now];
+    [comps setHour:0];
+    NSDate *today = [gregorian dateFromComponents:comps];
+        
+    [self.stepCounter queryStepCountStartingFrom:today
+                      to:now
+                      toQueue:[NSOperationQueue mainQueue]
+                      withHandler:^(NSInteger numberOfSteps, NSError *error) {
+                          NSLog(@"%s %ld %@", __PRETTY_FUNCTION__, numberOfSteps, error);
+                      }];
 }
 @end
