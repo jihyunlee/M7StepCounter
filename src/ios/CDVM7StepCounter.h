@@ -28,7 +28,7 @@
 
 @property (nonatomic, strong) CMStepCounter *stepCounter;
 
-- (void) isAvailable:(CDVInvokedUrlCommand*)command;
+- (BOOL) isAvailable:(CDVInvokedUrlCommand*)command;
 - (void) start:(CDVInvokedUrlCommand*)command;
 - (void) stop:(CDVInvokedUrlCommand*)command;
 - (void) getSteps:(CDVInvokedUrlCommand*)command;

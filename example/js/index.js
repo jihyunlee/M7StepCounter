@@ -16,47 +16,38 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        if(window.cordova.logger) {
-            window.cordova.logger.__onDeviceReady();
-        }
-        
-        app.isAvailable();
-        console.log('ho');
-    },
-    isAvailable: function() {
-        console.log('isAvailable');
-        console.log('M7StepCounter',M7StepCounter);
-        M7StepCounter.isAvailable(app.onAvailable, app.generateFailureFunction("isAvailable Failed"));
-    },
-    onAvailable: function(res) {
-        console.log('onAvailable', res);
-    },
-    generateFailureFunction: function(message) {
-        console.log('generateFailure', message);
-        var func = function(reason) {
-            var details = "";
-            if (reason) {
-                details += ": " + JSON.stringify(reason);
-            }
-            app.setStatus(message + details);
-        };
-        return func;
+initialize: function() {
+    this.bindEvents();
+},
+bindEvents: function() {
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+onDeviceReady: function() {
+    if(window.cordova.logger) {
+        window.cordova.logger.__onDeviceReady();
     }
+    
+    app.isAvailable();
+},
+isAvailable: function() {
+    var sc = new M7StepCounter();
+    console.log('app.isAvailable');
+    sc.isAvailable(app.onAvailable, app.generateFailureFunction("isAvailable Failed"));
+},
+onAvailable: function(res) {
+    console.log('app.onAvailable', res);
+},
+generateFailureFunction: function(message) {
+    console.log('app.generateFailure', message);
+    var func = function(reason) {
+        var details = "";
+        if (reason) {
+            details += ": " + JSON.stringify(reason);
+        }
+        app.setStatus(message + details);
+    };
+    return func;
+}
 };
