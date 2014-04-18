@@ -18,36 +18,42 @@
  */
 
 var app = {
-initialize: function() {
-    this.bindEvents();
-},
-bindEvents: function() {
-    document.addEventListener('deviceready', this.onDeviceReady, false);
-},
-onDeviceReady: function() {
-    if(window.cordova.logger) {
-        window.cordova.logger.__onDeviceReady();
-    }
-    
-    app.isAvailable();
-},
-isAvailable: function() {
-    var sc = new M7StepCounter();
-    console.log('app.isAvailable');
-    sc.isAvailable(app.onAvailable, app.generateFailureFunction("isAvailable Failed"));
-},
-onAvailable: function(res) {
-    console.log('app.onAvailable', res);
-},
-generateFailureFunction: function(message) {
-    console.log('app.generateFailure', message);
-    var func = function(reason) {
-        var details = "";
-        if (reason) {
-            details += ": " + JSON.stringify(reason);
+    initialize: function() {
+        this.bindEvents();
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {
+        if(window.cordova.logger) {
+            window.cordova.logger.__onDeviceReady();
         }
-        app.setStatus(message + details);
-    };
-    return func;
-}
+        
+        app.sc = new M7StepCounter();
+        app.isAvailable();
+    },
+    isAvailable: function() {
+        console.log('app.isAvailable');
+        app.sc.isAvailable(app.onAvailable, app.generateFailureFunction("isAvailable Failed"));
+    },
+    onAvailable: function(res) {
+        console.log('app.onAvailable', res);
+    },
+    start: function() {
+        
+    },
+    stop: function() {
+        
+    },
+    generateFailureFunction: function(message) {
+        console.log('app.generateFailure', message);
+        var func = function(reason) {
+            var details = "";
+            if (reason) {
+                details += ": " + JSON.stringify(reason);
+            }
+            app.setStatus(message + details);
+        };
+        return func;
+    }
 };
