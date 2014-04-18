@@ -23,22 +23,19 @@
 
 @synthesize stepCounter;
 
-
 - (void)pluginInitialize {
     
     NSLog(@"M7StepCounter Cordova Plugin");
     NSLog(@"(c)2014 Jihyun Lee");
 
     [super pluginInitialize];
-
-    self.stepCounter = [[CMStepCounter alloc] initWithDelegate:self queue:nil];
+    
+    self.stepCounter = [[CMStepCounter alloc] init];
 }
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command
 {
-	CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    [CMStepCounter isStepCountingAvailable];
 }
 
 - (void) start:(CDVInvokedUrlCommand*)command

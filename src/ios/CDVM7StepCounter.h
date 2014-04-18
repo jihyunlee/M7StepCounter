@@ -23,10 +23,10 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface CDVM7StepCounter : CDVPlugin {
-
+    
 }
 
-@property (strong, nonatomic) CMStepCounter 	*stepCounter;
+@property (nonatomic, strong) CMStepCounter *stepCounter;
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command;
 - (void) start:(CDVInvokedUrlCommand*)command;
