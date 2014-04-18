@@ -21,13 +21,12 @@
 
 @implementation CDVM7StepCounter
 
-- (CDVPlugin*) initWithWebView:(UIWebView*)theWebView
-{
-    self = (CDVM7StepCounter*)[super initWithWebView:(UIWebView*)theWebView];
-    if (self) {
-		// initialization here
-    }
-    return self;
+- (void)pluginInitialize {
+    
+    NSLog(@"M7StepCounter Cordova Plugin");
+    NSLog(@"(c)2014 Jihyun Lee");
+
+    [super pluginInitialize];
 }
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command
