@@ -30,17 +30,17 @@
     return self;
 }
 
-- (void) getForKey:(CDVInvokedUrlCommand*)command
+- (void) isAvailable:(CDVInvokedUrlCommand*)command
 {
 
 }
 
-- (void) setForKey:(CDVInvokedUrlCommand*)command
+- (void) start:(CDVInvokedUrlCommand*)command
 {
 
 }
 
-- (void) removeForKey:(CDVInvokedUrlCommand*)command
+- (void) stop:(CDVInvokedUrlCommand*)command
 {   
 
 }
