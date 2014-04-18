@@ -36,10 +36,13 @@ var app = {
         console.log('app.isAvailable');
         app.sc.isAvailable(app.onAvailable, function(err) {
             console.log('isAvailable Failed');
+            document.getElementById('status').innerHTML = "Sorry! This device is not available for this service.";
         });
     },
     onAvailable: function(res) {
         console.log('app.onAvailable', res);
+        if(res) document.getElementById('status').innerHTML = "Yay!";
+        else document.getElementById('status').innerHTML = "Sorry! This device does not support.";
     },
     start: function() {
         app.sc.start(app.onStart, function(err) {

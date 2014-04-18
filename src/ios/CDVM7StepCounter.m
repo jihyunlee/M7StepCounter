@@ -31,12 +31,14 @@
     [super pluginInitialize];
 }
 
-- (BOOL) isAvailable:(CDVInvokedUrlCommand*)command
+- (void) isAvailable:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"CDVM7StepCounter -- isAvailable");
     BOOL ret = [CMStepCounter isStepCountingAvailable];
     NSLog(ret ? @"available" : @"not available");
-    return ret;
+    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:ret];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void) start:(CDVInvokedUrlCommand*)command
