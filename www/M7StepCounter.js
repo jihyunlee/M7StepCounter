@@ -27,21 +27,25 @@ var M7StepCounter = function() {
 
 M7StepCounter.prototype.isAvailable = function(successCallback, failureCallback)
 {
+	console.log('M7StepCounter.prototype.isAvailable');
 	exec(successCallback, failureCallback, this.serviceName, "isAvailable", []);
 }
 
 M7StepCounter.prototype.start = function(successCallback, failureCallback)
 {
+	console.log('M7StepCounter.prototype.start');
 	exec(successCallback, failureCallback, this.serviceName, "start", []);
 }
 
 M7StepCounter.prototype.stop = function(successCallback, failureCallback)
 {
+	console.log('M7StepCounter.prototype.stop');
 	exec(successCallback, failureCallback, this.serviceName, "stop", []);
 }
 
 M7StepCounter.prototype.getSteps = function(successCallback, failureCallback)
 {
+	console.log('M7StepCounter.prototype.getSteps');
 	exec(successCallback, failureCallback, this.serviceName, "getSteps", []);
 }
 
