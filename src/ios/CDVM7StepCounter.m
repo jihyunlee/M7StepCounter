@@ -1,56 +1,50 @@
-//
-//  M7StepCounter.m
-//  M7 Step Counter Cordova Plugin
-//
-//  Created by Jihyun Lee on 4/17/2014.
-//
-//
+/*
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
 
-#import "M7StepCounter.h"
+ http://www.apache.org/licenses/LICENSE-2.0
 
-@interface CDVM7StepCounter()
-@end
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ */
+
+#import "CDVM7StepCounter.h"
 
 @implementation CDVM7StepCounter
 
-- (void)pluginInitialize {
-    
-    NSLog(@"M7 Step Counter Cordova Plugin");
-    NSLog(@"(c)2014 Jihyun Lee");
-
-    [super pluginInitialize];
+- (CDVPlugin*) initWithWebView:(UIWebView*)theWebView
+{
+    self = (CDVM7StepCounter*)[super initWithWebView:(UIWebView*)theWebView];
+    if (self) {
+		// initialization here
+    }
+    return self;
 }
 
-#pragma mark - Cordova Plugin Methods
-
-- (void) isAvailable:(CDVInvokedUrlCommand*)command {
-    NSLog(@"isAvailable");
-    CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+- (void) getForKey:(CDVInvokedUrlCommand*)command
+{
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void) start:(CDVInvokedUrlCommand *)command {    
-    NSLog(@"start");
-    CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_NO_RESULT];
+- (void) setForKey:(CDVInvokedUrlCommand*)command
+{
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void) stop:(CDVInvokedUrlCommand*)command {
-    NSLog(@"stop");
-    CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+- (void) removeForKey:(CDVInvokedUrlCommand*)command
+{   
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void) getSteps:(CDVInvokedUrlCommand*)command {
-    NSLog(@"getSteps");
-    CDVPluginResult *pluginResult = nil;    
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
-#pragma mark - M7StepDelegate 
 
 @end
+

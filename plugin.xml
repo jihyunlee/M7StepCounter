@@ -1,36 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<plugin
-    xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="com.hellojihyun.M7StepCounter"
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.hellojihyun.cordova.plugin.M7StepCounter"
     version="1.0.0">
 
-    <name>M7 Step Counter Plugin</name>
-    <description>Cordova Plugin for iOS M7 StepCounter</description>
+    <name>M7StepCounter Plugin for Cordova iOS</name>
+    <description>M7StepCounter</description>
     <license>Apache 2.0</license>
-    <keywords>M7, iOS</keywords>
-    <repo>https://github.com/jihyunlee/M7StepCounter.git</repo>
-    <issue>https://github.com/jihyunlee/M7StepCounter/issues</issue>
-
+    <keywords>M7 Step Counter, iOS</keywords>	
+    
     <engines>
-        <engine name="cordova" version=">=2.9.0" />
+        <engine name="cordova" version=">=2.2.0" />
     </engines>
+	
+    <asset src="www/M7StepCounter.js" target="plugins/M7StepCounter.js" />
 
-    <js-module src="www/M7StepCounter.js" name="M7StepCounter">
-        <clobbers target="M7StepCounter" />
-    </js-module>
-
+	<js-module src="www/M7StepCounter.js" name="M7StepCounter">
+    	<clobbers target="window.M7StepCounter" />
+	</js-module>
+	
     <!-- ios -->
     <platform name="ios">
+        <!-- feature tag in config.xml -->
         <config-file target="config.xml" parent="/widget">
-            <feature name="M7StepCounter">
-                <param name="ios-package" value="CDVM7StepCounter" onload="true"/>
-            </feature>
+          <feature name="M7StepCounter">
+            <param name="ios-package" value="CDVM7StepCounter"/>
+          </feature>
         </config-file>
-
+        
         <header-file src="src/ios/CDVM7StepCounter.h" />
-        <source-file src="src/ios/CDVM7StepCounter.m" />
-
-        <!-- frameworks -->
-        <framework src="CoreBluetooth.framework" />
+        <source-file src="src/ios/CDVM7StepCounter.m"/>
+        
     </platform>
 </plugin>
