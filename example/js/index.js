@@ -41,8 +41,14 @@ var app = {
     },
     onAvailable: function(res) {
         console.log('app.onAvailable', res);
-        if(res) document.getElementById('status').innerHTML = "Yay!";
-        else document.getElementById('status').innerHTML = "Sorry! This device does not support.";
+        if(res) {
+            document.getElementById('status').innerHTML = "Yay!";
+            document.getElementsByClassName('onoffswitch')[0].style.display = 'inline-block';
+        }
+        else {
+            document.getElementById('status').innerHTML = "Sorry! This device does not support.";
+            document.getElementsByClassName('onoffswitch')[0].style.display = 'inline-block'; // for test
+        }
     },
     start: function() {
         app.sc.start(app.onStart, function(err) {
