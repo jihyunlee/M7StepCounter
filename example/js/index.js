@@ -66,9 +66,11 @@ var app = {
         console.log('app.onStop');
     },
     getSteps: function() {
-        app.sc.getSteps(app.gotSteps, function(err) {
-            console.log('getSteps Failed');
-        });
+        for(var day=0; day<7; day++) {
+            app.sc.getSteps(day, app.gotSteps, function(err) {
+                console.log('getSteps Failed');
+            });
+        }
     },
     gotSteps: function(res) {
         console.log('app.gotSteps', res);
