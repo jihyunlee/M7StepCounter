@@ -39,6 +39,7 @@
     
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:ret];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
 }
 
 - (void) start:(CDVInvokedUrlCommand*)command
@@ -48,29 +49,64 @@
     [self.stepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] 
                       updateOn:3
                       withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+//                          NSLog(@"%ld %@ %@",(long)numberOfSteps, timestamp, error);
                       }];
+    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void) stop:(CDVInvokedUrlCommand*)command
 {   
     NSLog(@"CDVM7StepCounter -- stop");
     [self.stepCounter stopStepCountingUpdates];
+    
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void) getSteps:(CDVInvokedUrlCommand*)command
 {   
     NSLog(@"CDVM7StepCounter -- getSteps");
+
+    NSInteger day = [[command.arguments objectAtIndex:0] intValue];
+    
     NSDate *now = [NSDate date];
+    
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:now];
-    [comps setHour:0];
-    NSDate *today = [gregorian dateFromComponents:comps];
-        
-    [self.stepCounter queryStepCountStartingFrom:today
-                      to:now
+    NSDateComponents *dc = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:now];
+    
+    [dc setHour:-24 * day];
+    NSDate *beginningOfDay = [gregorian dateFromComponents:dc];
+    
+    [dc setHour:23];
+    [dc setMinute:59];
+    [dc setSecond:59];
+    NSDate *endOfDay = [gregorian dateFromComponents:dc];
+    
+    [self.stepCounter queryStepCountStartingFrom:beginningOfDay
+                      to: day == 0 ? now : endOfDay
                       toQueue:[NSOperationQueue mainQueue]
                       withHandler:^(NSInteger numberOfSteps, NSError *error) {
-                          NSLog(@"%s %ld %@", __PRETTY_FUNCTION__, numberOfSteps, error);
+                        NSLog(@"%ld %@", (long)numberOfSteps, error);
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsInt : numberOfSteps];
+                        [self.commandDelegate sendPluginResult : pluginResult callbackId : command.callbackId];
                       }];
+    
+//    NSDate *now = [NSDate date];
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//    NSDateComponents *comps = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:now];
+//    [comps setHour:0];
+//    NSDate *today = [gregorian dateFromComponents:comps];
+//        
+//    [self.stepCounter queryStepCountStartingFrom:today
+//                      to:now
+//                      toQueue:[NSOperationQueue mainQueue]
+//                      withHandler:^(NSInteger numberOfSteps, NSError *error) {
+//                          NSLog(@"%ld %@", (long)numberOfSteps, error);
+//                          CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsInt : numberOfSteps];
+//                          [self.commandDelegate sendPluginResult : pluginResult callbackId : command.callbackId];
+//                      }];
+
 }
 @end
