@@ -48,7 +48,6 @@
     [self.stepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] 
                       updateOn:3
                       withHandler:^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
-                          NSLog(@"%s %ld %@ %@", __PRETTY_FUNCTION__, numberOfSteps, timestamp, error);
                       }];
 }
 
