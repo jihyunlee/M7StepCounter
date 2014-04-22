@@ -47,6 +47,7 @@ var app = {
         }
         else {
             document.getElementById('status').innerHTML = "Sorry! This device does not support.";
+            document.getElementsByClassName('onoffswitch')[0].style.display = 'inline-block'; // for test
         }
     },
     start: function() {
@@ -56,6 +57,7 @@ var app = {
     },
     onStart: function() {
         console.log('app.onStart');
+        setInterval(function(){app.getSteps();},1000);
     },
     stop: function() {
         app.sc.stop(app.onStop, function(err) {
