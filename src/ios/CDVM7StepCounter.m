@@ -76,37 +76,23 @@
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dc = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:now];
     
-    [dc setHour:-24 * day];
+    [dc setHour:-24*day];
     NSDate *beginningOfDay = [gregorian dateFromComponents:dc];
     
-    [dc setHour:23];
+    [dc setHour:-24*day+23];
     [dc setMinute:59];
     [dc setSecond:59];
     NSDate *endOfDay = [gregorian dateFromComponents:dc];
+    if(day == 0)
+        endOfDay = now;
     
     [self.stepCounter queryStepCountStartingFrom:beginningOfDay
-                      to: day == 0 ? now : endOfDay
+                      to: endOfDay  //day == 0 ? now : endOfDay
                       toQueue:[NSOperationQueue mainQueue]
                       withHandler:^(NSInteger numberOfSteps, NSError *error) {
-                        NSLog(@"%ld %@", (long)numberOfSteps, error);
-                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsInt : numberOfSteps];
+                        NSLog(@"%zd %@", numberOfSteps, error);
+                        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsInt : (int)numberOfSteps];
                         [self.commandDelegate sendPluginResult : pluginResult callbackId : command.callbackId];
                       }];
-    
-//    NSDate *now = [NSDate date];
-//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-//    NSDateComponents *comps = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:now];
-//    [comps setHour:0];
-//    NSDate *today = [gregorian dateFromComponents:comps];
-//        
-//    [self.stepCounter queryStepCountStartingFrom:today
-//                      to:now
-//                      toQueue:[NSOperationQueue mainQueue]
-//                      withHandler:^(NSInteger numberOfSteps, NSError *error) {
-//                          NSLog(@"%ld %@", (long)numberOfSteps, error);
-//                          CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsInt : numberOfSteps];
-//                          [self.commandDelegate sendPluginResult : pluginResult callbackId : command.callbackId];
-//                      }];
-
 }
 @end
