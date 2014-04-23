@@ -67,14 +67,56 @@ var app = {
     onStop: function() {
         console.log('app.onStop');
     },
-    getSteps: function() {
-        for(var day=0; day<7; day++) {
-            app.sc.getSteps(day, app.gotSteps, function(err) {
-                console.log('getSteps Failed');
-            });
-        }
+    getTodaySteps: function() {
+        app.sc.getSteps(0, app.gotTodaySteps, function(err) {
+            console.log('getTodaySteps Failed');
+        });
     },
-    gotSteps: function(res) {
-        console.log('app.gotSteps', res);
+    gotTodaySteps: function(res) {
+        console.log('app.gotTodaySteps', res);
+    },
+    getLastweekSteps: function() {
+
+        var weeklySteps = [];
+
+        var getDaySix = function(res) {
+            weeklySteps.push(res);
+            console.log('weeklySteps',weeklySteps);
+            return weeklySteps;
+        };
+        var getDayFive = function(res) {
+            weeklySteps.push(res);
+            app.sc.getSteps(6, getDaySix(), function(err) {
+                console.log('getDayFive Failed');
+            });    
+        };
+        var getDayFour = function(res) {
+            weeklySteps.push(res);
+            app.sc.getSteps(5, getDayFive(), function(err) {
+                console.log('getDayFive Failed');
+            });    
+        };
+        var getDayThree = function(res) {
+            weeklySteps.push(res);
+            app.sc.getSteps(4, getDayFour(), function(err) {
+                console.log('getDayFour Failed');
+            });    
+        };
+        var getDayTwo = function(res) {
+            weeklySteps.push(res);
+            app.sc.getSteps(3, getDayThree(), function(err) {
+                console.log('getDayThree Failed');
+            });    
+        };
+        var getDayOne = function(res) {
+            weeklySteps.push(res);
+            app.sc.getSteps(2, getDayTwo(), function(err) {
+                console.log('getDayTwo Failed');
+            });    
+        };
+
+        app.sc.getSteps(1, getDayOne(), function(err) {
+            console.log('getDayOne Failed');
+        });
     }
 };
