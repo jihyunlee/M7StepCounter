@@ -32,5 +32,4 @@
 - (void) start:(CDVInvokedUrlCommand*)command;
 - (void) stop:(CDVInvokedUrlCommand*)command;
 - (void) getSteps:(CDVInvokedUrlCommand*)command;
-
 @end
