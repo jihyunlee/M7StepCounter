@@ -67,12 +67,12 @@ var app = {
     onStop: function() {
         console.log('app.onStop');
     },
-    getTodaySteps: function() {
-        app.sc.getSteps(0, app.gotTodaySteps, function(err) {
+    getSteps: function() {
+        app.sc.getSteps(0, app.gotSteps, function(err) {
             console.log('getTodaySteps Failed');
         });
     },
-    gotTodaySteps: function(res) {
+    gotSteps: function(res) {
         console.log('app.gotTodaySteps', res);
     },
     getLastweekSteps: function() {
