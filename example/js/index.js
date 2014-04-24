@@ -74,6 +74,8 @@ var app = {
     },
     gotSteps: function(res) {
         console.log('app.gotTodaySteps', res);
+        document.getElementById('today').innerHTML = res;
+        app.getLastweekSteps();
     },
     getLastweekSteps: function() {
 
@@ -82,6 +84,7 @@ var app = {
         var getDaySix = function(res) {
             weeklySteps.push(res);
             console.log('weeklySteps',weeklySteps);
+            document.getElementById('weekly').innerHTML = weeklySteps;
             return weeklySteps;
         };
         var getDayFive = function(res) {
