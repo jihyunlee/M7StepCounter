@@ -121,5 +121,16 @@ var app = {
         app.sc.getSteps(1, getDayOne(), function(err) {
             console.log('getDayOne Failed');
         });
+    },
+    getDate: function(dayBefore) {
+        var date = new Date();
+        date.setDate(date.getDate() - dayBefore);
+
+        var dd = date.getDate();
+        var mm = date.getMonth()+1;
+
+        if(dd < 10) dd='0'+dd;
+        if(mm < 10) mm='0'+mm;
+        return mm+'/'+dd;
     }
 };
