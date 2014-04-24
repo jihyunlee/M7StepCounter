@@ -54,14 +54,14 @@ time, mark, audio, video {
     height: 100px;
     line-height: 100px;
     vertical-align: middle;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 #status {
     height: 50px;
     line-height: 50px;
     vertical-align: middle;
-    font-size: 1.17em;
+    font-size: .83em; /*1.17em;*/
 }
 
 .onoffswitch {
