@@ -47,7 +47,6 @@ var app = {
         }
         else {
             document.getElementById('status').innerHTML = "Sorry! This device does not support.";
-            document.getElementsByClassName('onoffswitch')[0].style.display = 'inline-block'; // for test
         }
     },
     start: function() {
@@ -78,9 +77,9 @@ var app = {
         app.getLastweekSteps();
     },
     getLastweekSteps: function() {
-
+        
         var weeklySteps = [];
-
+        
         var getDaySix = function(res) {
             weeklySteps.push(res);
             console.log('weeklySteps',weeklySteps);
@@ -89,46 +88,34 @@ var app = {
         };
         var getDayFive = function(res) {
             weeklySteps.push(res);
-            app.sc.getSteps(6, getDaySix(), function(err) {
-                console.log('getDayFive Failed');
-            });    
+            app.sc.getSteps(6, function(res){ getDaySix(res) }, function(err) { console.log('getDayFive Failed'); });
         };
         var getDayFour = function(res) {
             weeklySteps.push(res);
-            app.sc.getSteps(5, getDayFive(), function(err) {
-                console.log('getDayFive Failed');
-            });    
+            app.sc.getSteps(5, function(res){ getDayFive(res) }, function(err) { console.log('getDayFive Failed'); });
         };
         var getDayThree = function(res) {
             weeklySteps.push(res);
-            app.sc.getSteps(4, getDayFour(), function(err) {
-                console.log('getDayFour Failed');
-            });    
+            app.sc.getSteps(4, function(res){ getDayFour(res) }, function(err) { console.log('getDayFour Failed'); });
         };
         var getDayTwo = function(res) {
             weeklySteps.push(res);
-            app.sc.getSteps(3, getDayThree(), function(err) {
-                console.log('getDayThree Failed');
-            });    
+            app.sc.getSteps(3, function(res){ getDayThree(res) }, function(err) { console.log('getDayThree Failed'); });
         };
         var getDayOne = function(res) {
             weeklySteps.push(res);
-            app.sc.getSteps(2, getDayTwo(), function(err) {
-                console.log('getDayTwo Failed');
-            });    
+            app.sc.getSteps(2, function(res){ getDayTwo(res) }, function(err) { console.log('getDayTwo Failed'); });
         };
-
-        app.sc.getSteps(1, getDayOne(), function(err) {
-            console.log('getDayOne Failed');
-        });
+        
+        app.sc.getSteps(1, function(res) { getDayOne(res) }, function(err) { console.log('getDayOne Failed'); });
     },
     getDate: function(dayBefore) {
         var date = new Date();
         date.setDate(date.getDate() - dayBefore);
-
+        
         var dd = date.getDate();
         var mm = date.getMonth()+1;
-
+        
         if(dd < 10) dd='0'+dd;
         if(mm < 10) mm='0'+mm;
         return mm+'/'+dd;
