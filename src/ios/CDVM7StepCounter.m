@@ -83,11 +83,9 @@
     [dc setMinute:59];
     [dc setSecond:59];
     NSDate *endOfDay = [gregorian dateFromComponents:dc];
-    if(day == 0)
-        endOfDay = now;
-    
+
     [self.stepCounter queryStepCountStartingFrom:beginningOfDay
-                      to: endOfDay  //day == 0 ? now : endOfDay
+                      to: day == 0 ? now : endOfDay
                       toQueue:[NSOperationQueue mainQueue]
                       withHandler:^(NSInteger numberOfSteps, NSError *error) {
                         NSLog(@"%zd %@", numberOfSteps, error);
