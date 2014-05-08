@@ -14,4 +14,4 @@ M7 Step Counter Plugin for PhoneGap
 - getSteps
 
 ##### Reference
-<a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html" target="_blank">CMStepCounter Class</a> from Apple Developer
+- <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html" target="_blank">CMStepCounter Class</a> from Apple Developer
