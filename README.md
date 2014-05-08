@@ -27,7 +27,7 @@ M7 Step Counter Plugin for PhoneGap
     -  @param successCallback
     -  @param failureCallback
     -  @return
-    -  @see <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/instm/CMStepCounter/stopStepCountingUpdates" target="_blank">startStepCountingUpdatesToQueue:updateOn:withHandler:</a>
+    -  @see <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/instm/CMStepCounter/stopStepCountingUpdates" target="_blank">stopStepCountingUpdates</a>
 
 + getSteps
     -  @param day
