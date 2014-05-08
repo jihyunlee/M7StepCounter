@@ -10,9 +10,25 @@ M7 Step Counter Plugin for PhoneGap
 
 
 ##### APIs
+
+/*
+ *  @method isAvailable
+ *
+ *  @param successCallback  The delegate that will receive central role events.
+ *  @param failureCallback  An optional dictionary specifying options for the manager.
+ *
+ *  @discussion     The initialization call. The events of the central role will be dispatched on the provided queue.
+ *                  If <i>nil</i>, the main queue will be used.
+ *                  
+ *	@return			A Boolean indicating whether step-counting support is available on the current device
+
+ *  @see            <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/clm/CMStepCounter/isStepCountingAvailable">CMStepCounter:isStepCountingAvailable
+ *
+ */
 - isAvailable(successCallback, failureCallback)<br/>
-// Returns a Boolean indicating whether step-counting support is available on the current device
-- start
+
+- start(successCallback, failureCallback)<br/>
+// Return:
 - stop
 - getSteps
 
