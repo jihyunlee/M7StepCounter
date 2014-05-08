@@ -15,26 +15,26 @@ M7 Step Counter Plugin for PhoneGap
     - @param successCallback  callback
     - @param failureCallback  callback
     - @return A Boolean indicating whether step-counting support is available on the current device
-    - @see                    <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/clm/CMStepCounter/isStepCountingAvailable">CMStepCounter:isStepCountingAvailable</a>
+    - @see                    <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/clm/CMStepCounter/isStepCountingAvailable" target="_blank">isStepCountingAvailable</a>
 
 + start(successCallback, failureCallback)<br/>
     -  @param successCallback
     -  @param failureCallback
     -  @return
-    -  @see
+    -  @see <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/instm/CMStepCounter/startStepCountingUpdatesToQueue:updateOn:withHandler:" target="_blank">startStepCountingUpdatesToQueue:updateOn:withHandler:</a>
 
 + stop
     -  @param successCallback
     -  @param failureCallback
     -  @return
-    -  @see
+    -  @see <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/instm/CMStepCounter/stopStepCountingUpdates" target="_blank">startStepCountingUpdatesToQueue:updateOn:withHandler:</a>
 
 + getSteps
     -  @param day
     -  @param successCallback
     -  @param failureCallback
     -  @return
-    -  @see
+    -  @see <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/instm/CMStepCounter/queryStepCountStartingFrom:to:toQueue:withHandler:" target="_blank">startStepCountingUpdatesToQueue:updateOn:withHandler:</a>
 
 #### Reference
 - <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html" target="_blank">CMStepCounter Class</a> from Apple Developer
