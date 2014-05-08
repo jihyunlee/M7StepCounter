@@ -11,14 +11,14 @@ M7 Step Counter Plugin for PhoneGap
 
 ##### APIs
 
-######isAvailable(successCallback, failureCallback)<br/>
+- isAvailable(successCallback, failureCallback)<br/>
 /*  
   @param successCallback  callback<br/>
   @param failureCallback  callback<br/>
 
   @return			            A Boolean indicating whether step-counting support is available on the current device<br/>
   
-  @see                    <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/clm/CMStepCounter/isStepCountingAvailable">CMStepCounter:isStepCountingAvailable</a>
+  @see                    <a href="https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMStepCounter_class/Reference/Reference.html#//apple_ref/occ/clm/CMStepCounter/isStepCountingAvailable">CMStepCounter:isStepCountingAvailable</a><br/>
 */
 
 - start(successCallback, failureCallback)<br/>
