@@ -28,7 +28,7 @@ M7 Step Counter Plugin for PhoneGap
     -  @param failureCallback
     -  @return
     -  @see
-    -  
+
 + getSteps
     -  @param day
     -  @param successCallback
