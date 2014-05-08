@@ -1,15 +1,15 @@
 M7 Step Counter Plugin for PhoneGap
 -------------
 
-##### Supported Platforms
+#### Supported Platforms
 * iOS7 with <a href="http://www.apple.com/iphone-5s/features" target="_blnak">M7 motion coprocessor</a> (currently only iPhone5s)
 
 
-##### Installation
+#### Installation
     $ cordova plugin add https://github.com/jihyunlee/M7StepCounter.git
 
 
-##### APIs
+#### APIs
 
 + isAvailable(successCallback, failureCallback)<br/>
     - @param<successCallback  callback<br/>
