@@ -10,9 +10,8 @@ M7 Step Counter Plugin for PhoneGap
 
 
 ##### APIs
-- ###### isAvailable
- Returns a Boolean indicating whether step-counting support is available on the current device
-
+- isAvailable(successCallback, failureCallback)
+// Returns a Boolean indicating whether step-counting support is available on the current device
 - start
 - stop
 - getSteps
