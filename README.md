@@ -1,5 +1,5 @@
 M7 Step Counter Plugin for PhoneGap
-=============
+-------------
 
 
 ##### Supported Platforms
