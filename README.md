@@ -3,7 +3,7 @@ M7 Step Counter Plugin for PhoneGap
 
 
 ##### Supported Platforms
-* iOS7 (only iPhone5S)
+* iOS7 with M7 motion co-processor (currently only iPhone5s)
 
 
 ##### Installation
