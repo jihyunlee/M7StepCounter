@@ -11,7 +11,7 @@ M7 Step Counter Plugin for PhoneGap
 
 ##### APIs
 
-- isAvailable(successCallback, failureCallback)<br/>
+######isAvailable(successCallback, failureCallback)<br/>
 /*  
   @param successCallback  callback<br/>
   @param failureCallback  callback<br/>
