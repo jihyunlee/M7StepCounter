@@ -33,18 +33,12 @@
 
 - (void) isAvailable:(CDVInvokedUrlCommand*)command
 {
-    // NSLog(@"CDVM7StepCounter -- isAvailable");
-    BOOL ret = [CMStepCounter isStepCountingAvailable];
-    // NSLog(ret ? @"available" : @"not available");
-    
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:ret];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:[CMStepCounter isStepCountingAvailable]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
 }
 
 - (void) start:(CDVInvokedUrlCommand*)command
 {
-    // NSLog(@"CDVM7StepCounter -- start");
     self.stepCounter = [[CMStepCounter alloc] init];
     [self.stepCounter startStepCountingUpdatesToQueue:[NSOperationQueue mainQueue] 
                       updateOn:3
@@ -57,8 +51,7 @@
 }
 
 - (void) stop:(CDVInvokedUrlCommand*)command
-{   
-    // NSLog(@"CDVM7StepCounter -- stop");
+{
     [self.stepCounter stopStepCountingUpdates];
     
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
@@ -67,8 +60,6 @@
 
 - (void) getSteps:(CDVInvokedUrlCommand*)command
 {   
-    // NSLog(@"CDVM7StepCounter -- getSteps");
-
     NSInteger day = [[command.arguments objectAtIndex:0] intValue];
     
     NSDate *now = [NSDate date];
